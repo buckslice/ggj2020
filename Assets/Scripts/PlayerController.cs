@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
     public const float MAX_STEEP = 50.0f;
     public const float TRY_JUMP_LENIENCE = 0.2f;
 
+    public Animator anim;
+
     public Rigidbody rigid { get; private set; }
     Collider col;
 
@@ -96,6 +98,16 @@ public class PlayerController : MonoBehaviour {
 
         move = move.normalized * speed;
 
+        //Run 
+        if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+        {
+            anim.SetBool("Run", true);
+        }
+        else
+        {
+            anim.SetBool("Run", false);
+        }
+
         if (flyMode) {
             float upDir = 0.0f;
             if (Input.GetKey(KeyCode.LeftShift)) {
@@ -121,8 +133,10 @@ public class PlayerController : MonoBehaviour {
             }
             if (grounded) {
                 groundedTime += Time.deltaTime;
+                anim.SetBool("Jump", false);
             } else {
                 groundedTime = 0.0f;
+                anim.SetBool("Jump", true);
             }
 
             bool onSteep = grounded && Vector3.Angle(Vector3.up, normal.normalized) > MAX_STEEP;
