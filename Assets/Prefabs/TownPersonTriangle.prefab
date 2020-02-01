@@ -67,11 +67,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownPersonTriangle
       objectReference: {fileID: 0}
+    - target: {fileID: 3220125470882334462, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125470882334462, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6197448
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125471547332433, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125471547332433, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6197448
+      objectReference: {fileID: 0}
     - target: {fileID: 3220125472858334347, guid: e023e980e30f48e4188fb1a224210143,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: bae5409d952654d4d805354c8138c280,
         type: 3}
+    - target: {fileID: 3220125472858334347, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334347, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6197448
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e023e980e30f48e4188fb1a224210143, type: 3}
