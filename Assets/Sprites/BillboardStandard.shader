@@ -69,7 +69,7 @@ Shader "Billboard/StandardAtlas"
         v.normal = mul(v.normal, rotationMatrix);
 
         // undo object to world transform surface shader will apply
-        //v.vertex.xyz = mul((float3x3)unity_WorldToObject, v.vertex.xyz);
+        v.vertex.xyz = mul((float3x3)unity_WorldToObject, v.vertex.xyz);
         v.normal = mul(v.normal, (float3x3)unity_ObjectToWorld);
 
         // shadows look slighty scuffed but shadow bias of 0.3 makes it less noticeable
