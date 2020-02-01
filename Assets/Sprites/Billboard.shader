@@ -1,4 +1,5 @@
 ﻿
+
 Shader "Billboard/Sprite" {
     Properties
     {
