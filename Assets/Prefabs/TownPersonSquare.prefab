@@ -65,7 +65,37 @@ PrefabInstance:
     - target: {fileID: 2800540402325228041, guid: e023e980e30f48e4188fb1a224210143,
         type: 3}
       propertyPath: m_Name
-      value: TownPerson
+      value: TownPersonSquare
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125470882334462, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.1942594
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125470882334462, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125471547332433, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.1942594
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125471547332433, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334347, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.1942594
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334347, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e023e980e30f48e4188fb1a224210143, type: 3}

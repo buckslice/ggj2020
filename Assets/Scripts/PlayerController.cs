@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float jumpSpeed = 5.0f;
     public bool clipWhileFlying = false;
     //public float fixedPitch = -30.0f;
+    public float groundedTime = 0.0f;
 
     public const float MAX_STEEP = 50.0f;
     public const float TRY_JUMP_LENIENCE = 0.2f;
@@ -106,9 +107,9 @@ public class PlayerController : MonoBehaviour {
             move += upDir * Vector3.up * speed;
         } else {    // check for jump and grounded stuff
             float yvel = rigid.velocity.y;
-            Vector3 start = transform.position + Vector3.up * 0.45f;
+            Vector3 start = transform.position + Vector3.up * 0.4f;
             //bool grounded = Physics.SphereCast(start, 0.5f, Vector3.down, 0.75f, 1);
-            int count = Physics.SphereCastNonAlloc(start, 0.45f, Vector3.down, hits, 0.25f);
+            int count = Physics.SphereCastNonAlloc(start, 0.4f, Vector3.down, hits, 0.2f);
 
             bool grounded = false;
             Vector3 normal = Vector3.zero;
@@ -117,6 +118,11 @@ public class PlayerController : MonoBehaviour {
                     grounded = true;
                     normal += hits[i].normal;
                 }
+            }
+            if (grounded) {
+                groundedTime += Time.deltaTime;
+            } else {
+                groundedTime = 0.0f;
             }
 
             bool onSteep = grounded && Vector3.Angle(Vector3.up, normal.normalized) > MAX_STEEP;
@@ -138,7 +144,7 @@ public class PlayerController : MonoBehaviour {
             move.y = yvel;
 
             rigid.useGravity = true;
-            if (grounded && !onSteep && timeSinceJump > 0.2f) {
+            if (groundedTime > 0.25f && !onSteep && timeSinceJump > 0.2f) {
                 if (move.x == 0 && move.z == 0) { // dont apply gravity if grounded and no inputs
                     rigid.useGravity = false;
                 }
