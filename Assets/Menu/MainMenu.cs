@@ -13,6 +13,12 @@ public class MainMenu : MonoBehaviour
     public void play() {
         SceneManager.LoadScene(1);
     }
+
+    public void QuitGame() {
+        print("quit");
+        Application.Quit();
+    }
+
     // Update is called once per frame
     void Update()
     {
