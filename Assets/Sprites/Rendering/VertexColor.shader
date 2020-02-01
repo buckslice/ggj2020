@@ -5,6 +5,7 @@
     }
     SubShader {
         //Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        Tags { "IgnoreProjector"="True" }
         LOD 200
        
         CGPROGRAM
