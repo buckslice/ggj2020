@@ -13,7 +13,7 @@ public class Billboard : MonoBehaviour {
 	// Update is called once per frame
 	void Update() {
 		
-		transform.localRotation = Quaternion.LookRotation(transform.position - cam.position);
+		transform.localRotation = Quaternion.LookRotation(cam.forward);
 		//Vector3 eulers = transform.localEulerAngles;
 		//transform.localEulerAngles = new Vector3(0, eulers.y, 0);
 	}
