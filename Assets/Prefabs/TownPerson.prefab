@@ -351,6 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3220125471681994292}
   - component: {fileID: 3220125471681994293}
+  - component: {fileID: 5173533497299078822}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -387,6 +388,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc7c6aa86a5be95429a1e7d10af144b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5173533497299078822
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220125471681994295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 387ecf39b33c7964683ba72792de9586, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3220125472191749176
 GameObject:
   m_ObjectHideFlags: 0
@@ -431,8 +451,8 @@ Projector:
   m_FarClipPlane: 10
   m_FieldOfView: 60
   m_AspectRatio: 1
-  m_Orthographic: 0
-  m_OrthographicSize: 10
+  m_Orthographic: 1
+  m_OrthographicSize: 0.8
   m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
