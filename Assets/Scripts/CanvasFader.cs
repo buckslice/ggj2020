@@ -7,18 +7,7 @@ public class CanvasFader : MonoBehaviour {
 
     public Image background;
 
-    // Start is called before the first frame update
-    void Start() {
-        StartCoroutine(FadeOut(3.0f));
-    }
-
-    // Update is called once per frame
-    void Update() {
-
-    }
-
-    IEnumerator FadeOut(float time) {
-        yield return new WaitForSeconds(1);
+    public IEnumerator FadeOut(float time) {
         float t = 0.0f;
         var c = background.color;
         while (t < time) {

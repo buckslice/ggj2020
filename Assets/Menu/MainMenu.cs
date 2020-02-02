@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
     public void play() {
         SceneManager.LoadScene(1);
     }
+    public void ReturnToMenu() {
+        SceneManager.LoadScene(0);
+    }
 
     public void QuitGame() {
         print("quit");

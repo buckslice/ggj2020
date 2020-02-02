@@ -50,7 +50,9 @@ public class GiantPerson : MonoBehaviour {
     IEnumerator WinState()
     {
         mid_win_state = true;
-        yield return new WaitForSeconds(2f);
+        var fader = FindObjectOfType<CanvasFader>();
+        StartCoroutine(fader.FadeOut(3.0f));
+        yield return new WaitForSeconds(3.2f);
         SceneManager.LoadScene(2);
     }
 
@@ -118,7 +120,7 @@ public class GiantPerson : MonoBehaviour {
             if (soundTimer < 0.0f) {
                 source.clip = angryClip;
                 source.Play();
-                soundTimer = Random.Range(3.0f, 4f);
+                soundTimer = Random.Range(5.0f, 8f);
             }
         }
 

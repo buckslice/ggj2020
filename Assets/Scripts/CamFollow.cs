@@ -8,7 +8,7 @@ public class CamFollow : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     // make camera follow player smoothly, gets rid of annoying jitter 
