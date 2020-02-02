@@ -6,10 +6,11 @@ public class FaceChanger : MonoBehaviour {
 
     public Sprite[] happyFaces;
     public Sprite[] sadFaces;
-
+    int faceIndex = 0;
     SpriteRenderer sr;
     // Start is called before the first frame update
     void Start() {
+        faceIndex = Random.Range(0, happyFaces.Length);
         SetHappy(false);
     }
 
@@ -17,11 +18,11 @@ public class FaceChanger : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         if (isHappy) {
             if (happyFaces.Length > 0) {
-                sr.sprite = happyFaces[Random.Range(0, happyFaces.Length)];
+                sr.sprite = happyFaces[faceIndex];
             }
         } else {
             if (sadFaces.Length > 0) {
-                sr.sprite = sadFaces[Random.Range(0, sadFaces.Length)];
+                sr.sprite = sadFaces[faceIndex];
             }
         }
     }

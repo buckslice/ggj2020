@@ -358,10 +358,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ca31d8c1d69a67142ab05806973906f3, type: 3}
   - {fileID: 21300000, guid: c3ad038679ae80b47bfeb69dbbde16a4, type: 3}
   - {fileID: 21300000, guid: f0f21a56d1a903a40be05bdba6b924b5, type: 3}
+  - {fileID: 21300000, guid: e8966f39f2a1f0d4f8b1ea51a6f0fbed, type: 3}
   sadFaces:
   - {fileID: 21300000, guid: 446f51d2cf4377d49a2f7c79199e591b, type: 3}
   - {fileID: 21300000, guid: a8319e9ff5f347449a15838718db44a1, type: 3}
   - {fileID: 21300000, guid: 92805b4142534eb468bcaf296329a974, type: 3}
+  - {fileID: 21300000, guid: bdad52091c2d6cb4e803ca60b2c82b07, type: 3}
 --- !u!1 &3220125471681994295
 GameObject:
   m_ObjectHideFlags: 0
