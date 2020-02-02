@@ -34591,21 +34591,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GateBridge
       objectReference: {fileID: 0}
-    - target: {fileID: 3608670466377549190, guid: f8eea405d0960294eabf2e4148442a98,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 9.64
-      objectReference: {fileID: 0}
-    - target: {fileID: 3608670466377549191, guid: f8eea405d0960294eabf2e4148442a98,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 9.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9012209449382640388, guid: f8eea405d0960294eabf2e4148442a98,
-        type: 3}
-      propertyPath: requiredHappyPeople
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8eea405d0960294eabf2e4148442a98, type: 3}
 --- !u!199 &5326519129805718510

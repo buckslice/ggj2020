@@ -6,7 +6,7 @@ using TMPro;
 public class Gate : MonoBehaviour
 {
     public int requiredHappyPeople = 10;
-
+    public AudioSource source;
     public enum GateState
     {
         LOCKED, UNLOCKING, UNLOCKED
@@ -34,6 +34,7 @@ public class Gate : MonoBehaviour
 
     IEnumerator unlockDoor()
     {
+        source.Play();
         gate_state = GateState.UNLOCKING;
         anim.SetBool("unlock", true);
         yield return new WaitForSecondsRealtime(1f);

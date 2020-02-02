@@ -137,7 +137,7 @@ public class GiantPerson : MonoBehaviour {
 
             //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.position + dir), Time.deltaTime * 1.0f);
 
-            transform.LookAt(transform.position + dir);
+            //transform.LookAt(transform.position + dir);
         }
 
     }
