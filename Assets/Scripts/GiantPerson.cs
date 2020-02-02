@@ -24,7 +24,7 @@ public class GiantPerson : MonoBehaviour {
         //anim.SetBool("alert", giantState == GiantState.ALERT);
         anim.SetBool("chasing", giantState == GiantState.CHASING || giantState == GiantState.PATROLLING);
         //anim.SetBool("patrolling", giantState == GiantState.PATROLLING);
-        //anim.SetBool("win_state", giantState == GiantState.WIN_STATE);
+        anim.SetBool("win", giantState == GiantState.WIN_STATE);
         //anim.SetBool("hug", giantState == GiantState.HUG);
     }
 
@@ -79,7 +79,7 @@ public class GiantPerson : MonoBehaviour {
     {
 
         //If Giants come together, activate the win state and cancel everything. Time for hugs yo.
-        Collider[] nearby = Physics.OverlapSphere(transform.position, 3f, LayerMask.GetMask("Giant"));
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("Giant"));
         //Debug.Log(nearby.Length);
 
         if (giantState != GiantState.WIN_STATE) {
@@ -122,9 +122,10 @@ public class GiantPerson : MonoBehaviour {
 
 
         }
-        else if (giantState == GiantState.WIN_STATE)
+        else if (giantState == GiantState.WIN_STATE) {
+            UnFollow();
             return;
-
+        }
         if (following)
         {
             Vector3 off = following.TransformDirection(offset);
