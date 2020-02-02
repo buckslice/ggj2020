@@ -14,7 +14,7 @@ public class PlayerInteraction : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetButton("Interact")) {
+        if (Input.GetButtonDown("Interact")) {
             Collider[] nearby = Physics.OverlapSphere(transform.position, 2, 1 << 8);
             //Debug.Log(nearby.Length);
 
@@ -35,6 +35,7 @@ public class PlayerInteraction : MonoBehaviour {
                         happyPeople.Add(onDeckPerson);
                         happyPeople.Add(person);
                         onDeckPerson.face.SetHappy(true);
+                        onDeckPerson.PlaySound(true);
                         person.face.SetHappy(true);
                         person.FollowBehind(transform);
                         onDeckPerson.FollowBehind(person.transform);
@@ -42,9 +43,9 @@ public class PlayerInteraction : MonoBehaviour {
                             front.FollowBehind(onDeckPerson.transform);
                         }
 
-
                     } else {
                         onDeckPerson.UnFollow();
+                        onDeckPerson.PlaySound(false);
                     }
                     onDeckPerson = null;
 

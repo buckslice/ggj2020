@@ -10,6 +10,10 @@ public class TownPerson : MonoBehaviour {
     Animator anim;
     Vector3 spawnPoint;
     public FaceChanger face;
+    AudioSource source;
+
+    public AudioClip happySound;
+    public AudioClip sadSound;
 
     // Start is called before the first frame update
     void Start() {
@@ -17,6 +21,12 @@ public class TownPerson : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
         spawnPoint = transform.position;
         face = GetComponentInChildren<FaceChanger>();
+        source = GetComponentInChildren<AudioSource>();
+    }
+
+    public void PlaySound(bool happy) {
+        source.clip = happy ? happySound : sadSound;
+        source.Play();
     }
 
     public void Follow(Transform tofollow, Vector3 offset, float stoppingDistance) {

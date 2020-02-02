@@ -67,6 +67,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownPersonCircle
       objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334346, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334346, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334346, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334346, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334346, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 3220125472858334347, guid: e023e980e30f48e4188fb1a224210143,
         type: 3}
       propertyPath: m_Sprite

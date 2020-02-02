@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour {
     public bool clipWhileFlying = false;
     public float groundedTime = 0.0f;
 
-    public const float MAX_STEEP = 50.0f;
+    public const float MAX_STEEP = 45.0f;
     public const float TRY_JUMP_LENIENCE = 0.2f;
 
     public Animator anim;
@@ -131,6 +131,7 @@ public class PlayerController : MonoBehaviour {
                     normal += hits[i].normal;
                 }
             }
+            //Debug.Log(grounded);
             if (grounded) {
                 groundedTime += Time.deltaTime;
                 anim.SetBool("Jump", false);

@@ -62,6 +62,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2800540402325228040, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: happySound
+      value: 
+      objectReference: {fileID: 8300000, guid: c6da8051ed55c4b47b1d0885d1c9aa5c, type: 3}
+    - target: {fileID: 2800540402325228040, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: sadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a9045f1989122a4e996b9b262091fd0, type: 3}
     - target: {fileID: 2800540402325228041, guid: e023e980e30f48e4188fb1a224210143,
         type: 3}
       propertyPath: m_Name
@@ -86,6 +96,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.g
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334346, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220125472858334346, guid: e023e980e30f48e4188fb1a224210143,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3220125472858334347, guid: e023e980e30f48e4188fb1a224210143,
         type: 3}
