@@ -32,12 +32,14 @@ public class PlayerInteraction : MonoBehaviour {
                             front = happyPeople[happyPeople.Count - 1];
                         }
 
-                        happyPeople.Add(person);
                         happyPeople.Add(onDeckPerson);
-                        onDeckPerson.FollowBehind(transform);
-                        person.FollowBehind(onDeckPerson.transform);
+                        happyPeople.Add(person);
+                        onDeckPerson.face.SetHappy(true);
+                        person.face.SetHappy(true);
+                        person.FollowBehind(transform);
+                        onDeckPerson.FollowBehind(person.transform);
                         if (front) {
-                            front.FollowBehind(person.transform);
+                            front.FollowBehind(onDeckPerson.transform);
                         }
 
 
