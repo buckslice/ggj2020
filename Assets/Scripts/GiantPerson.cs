@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class GiantPerson : MonoBehaviour {
 
@@ -11,6 +12,10 @@ public class GiantPerson : MonoBehaviour {
     Vector3 offset;
     Vector3 spawnPoint;
     Transform player;
+
+    AudioSource source;
+    public AudioClip laughClip;
+    public AudioClip angryClip;
 
     public enum GiantState {
         IDLE, ALERT, CHASING, PATROLLING, WIN_STATE, HUG
@@ -37,6 +42,16 @@ public class GiantPerson : MonoBehaviour {
         anim = GetComponentInChildren<Animator>();
         spawnPoint = transform.position;
         giantState = GiantState.IDLE;
+        source = GetComponentInChildren<AudioSource>();
+    }
+
+    bool mid_win_state;
+
+    IEnumerator WinState()
+    {
+        mid_win_state = true;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(2);
     }
 
     public void Follow(Transform tofollow, Vector3 offset, float stoppingDistance) {
@@ -73,61 +88,66 @@ public class GiantPerson : MonoBehaviour {
     public Transform[] patrolPoints;
 
     Transform currentPatrolPoint;
-
+    float soundTimer = 0.0f;
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
         //If Giants come together, activate the win state and cancel everything. Time for hugs yo.
         Collider[] nearby = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("Giant"));
         //Debug.Log(nearby.Length);
 
         if (giantState != GiantState.WIN_STATE) {
-            foreach (var near in nearby)
-            {
+            foreach (var near in nearby) {
                 var giant = near.GetComponent<GiantPerson>();
                 if (giant != this)
                     Debug.Log(giant);
 
-                if (giant != this && giant != null)
-                {
+                if (giant != this && giant != null) {
                     giantState = GiantState.WIN_STATE;
                     giant.giantState = GiantState.WIN_STATE;
+                    if (!mid_win_state)
+                        StartCoroutine(WinState());
                 }
 
             }
 
         }
 
-        if (Vector3.Distance(this.transform.position, player.position) < max_awareness && (giantState == GiantState.IDLE || giantState == GiantState.PATROLLING))
-        {
+        if(giantState == GiantState.CHASING) {
+            soundTimer -= Time.deltaTime;
+            if (soundTimer < 0.0f) {
+                source.clip = angryClip;
+                source.Play();
+                soundTimer = Random.Range(3.0f, 4f);
+            }
+        }
+
+        if (Vector3.Distance(this.transform.position, player.position) < max_awareness && (giantState == GiantState.IDLE || giantState == GiantState.PATROLLING)) {
             giantState = GiantState.CHASING;
             FollowAtSide(player);
-        }
-        else if (Vector3.Distance(this.transform.position, player.position) > max_chase_range && giantState == GiantState.CHASING)
-        {
+        } else if (Vector3.Distance(this.transform.position, player.position) > max_chase_range && giantState == GiantState.CHASING) {
             giantState = GiantState.PATROLLING;
             UnFollow();
-        }
-        else if (giantState == GiantState.PATROLLING)
-        {
+        } else if (giantState == GiantState.PATROLLING) {
             //go through a list of points on the island
             if (currentPatrolPoint != null)
                 FollowAtSide(currentPatrolPoint);
 
-            if (currentPatrolPoint == null || Vector3.Distance(currentPatrolPoint.transform.position, this.transform.position) < 9)
-            {
+            if (currentPatrolPoint == null || Vector3.Distance(currentPatrolPoint.transform.position, this.transform.position) < 9) {
                 currentPatrolPoint = patrolPoints[Random.Range(0, patrolPoints.Length)];
             }
+            soundTimer -= Time.deltaTime;
+            if (soundTimer < 0.0f) {
+                source.clip = laughClip;
+                source.Play();
+                soundTimer = Random.Range(5.0f, 10f);
+            }
 
-
-        }
-        else if (giantState == GiantState.WIN_STATE) {
+        } else if (giantState == GiantState.WIN_STATE) {
             UnFollow();
             return;
         }
-        if (following)
-        {
+        if (following) {
             Vector3 off = following.TransformDirection(offset);
             agent.SetDestination(following.position + off);
 
