@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour {
     public float moveSpeed = 5.0f;
     public float jumpSpeed = 5.0f;
     public bool clipWhileFlying = false;
-    //public float fixedPitch = -30.0f;
     public float groundedTime = 0.0f;
 
     public const float MAX_STEEP = 50.0f;
@@ -78,9 +77,10 @@ public class PlayerController : MonoBehaviour {
         }
 
         float yaw = Input.GetAxis("Mouse X") * lookSensitivity;
-        //pitch = fixedPitch;
+        //pitch = -25f;
         pitch += Input.GetAxis("Mouse Y") * lookSensitivity;
-        pitch = Mathf.Clamp(pitch, -89, 89); // annoying to clamp pitch if dont save variable
+        pitch = Mathf.Clamp(pitch, -35, -20);
+        //pitch = Mathf.Clamp(pitch, -89, 89); // annoying to clamp pitch if dont save variable
 
         transform.Rotate(Vector3.up, yaw, Space.Self);
         camRoot.localRotation = Quaternion.AngleAxis(pitch, Vector3.left);
