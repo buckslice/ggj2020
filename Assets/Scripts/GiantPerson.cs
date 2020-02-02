@@ -21,11 +21,11 @@ public class GiantPerson : MonoBehaviour {
             return;
 
         anim.SetBool("idle", giantState == GiantState.IDLE);
-        anim.SetBool("alert", giantState == GiantState.ALERT);
-        anim.SetBool("chasing", giantState == GiantState.CHASING);
-        anim.SetBool("patrolling", giantState == GiantState.PATROLLING);
-        anim.SetBool("win_state", giantState == GiantState.WIN_STATE);
-        anim.SetBool("hug", giantState == GiantState.HUG);
+        //anim.SetBool("alert", giantState == GiantState.ALERT);
+        anim.SetBool("chasing", giantState == GiantState.CHASING || giantState == GiantState.PATROLLING);
+        //anim.SetBool("patrolling", giantState == GiantState.PATROLLING);
+        //anim.SetBool("win_state", giantState == GiantState.WIN_STATE);
+        //anim.SetBool("hug", giantState == GiantState.HUG);
     }
 
     public GiantState giantState;
