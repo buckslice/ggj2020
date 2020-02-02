@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class GiantPerson : MonoBehaviour {
 
@@ -42,6 +43,15 @@ public class GiantPerson : MonoBehaviour {
         spawnPoint = transform.position;
         giantState = GiantState.IDLE;
         source = GetComponentInChildren<AudioSource>();
+    }
+
+    bool mid_win_state;
+
+    IEnumerator WinState()
+    {
+        mid_win_state = true;
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(2);
     }
 
     public void Follow(Transform tofollow, Vector3 offset, float stoppingDistance) {
@@ -95,6 +105,8 @@ public class GiantPerson : MonoBehaviour {
                 if (giant != this && giant != null) {
                     giantState = GiantState.WIN_STATE;
                     giant.giantState = GiantState.WIN_STATE;
+                    if (!mid_win_state)
+                        StartCoroutine(WinState());
                 }
 
             }
