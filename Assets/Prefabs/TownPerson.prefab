@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a75351adfb46645b73afc627bb58af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  face: {fileID: 0}
 --- !u!1 &3220125470882334456
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3220125471547332432}
   - component: {fileID: 3220125471547332433}
+  - component: {fileID: 3063491219287024942}
   m_Layer: 0
   m_Name: head
   m_TagString: Untagged
@@ -340,6 +342,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3063491219287024942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220125471547332435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4924b1bd61ec8e440ad541eab5dd5ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  happyFaces:
+  - {fileID: 21300000, guid: ca31d8c1d69a67142ab05806973906f3, type: 3}
+  - {fileID: 21300000, guid: c3ad038679ae80b47bfeb69dbbde16a4, type: 3}
+  - {fileID: 21300000, guid: f0f21a56d1a903a40be05bdba6b924b5, type: 3}
+  sadFaces:
+  - {fileID: 21300000, guid: 446f51d2cf4377d49a2f7c79199e591b, type: 3}
+  - {fileID: 21300000, guid: a8319e9ff5f347449a15838718db44a1, type: 3}
+  - {fileID: 21300000, guid: 92805b4142534eb468bcaf296329a974, type: 3}
 --- !u!1 &3220125471681994295
 GameObject:
   m_ObjectHideFlags: 0

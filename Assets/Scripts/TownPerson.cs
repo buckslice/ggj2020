@@ -9,12 +9,14 @@ public class TownPerson : MonoBehaviour {
     Vector3 offset;
     Animator anim;
     Vector3 spawnPoint;
+    public FaceChanger face;
 
     // Start is called before the first frame update
     void Start() {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         spawnPoint = transform.position;
+        face = GetComponentInChildren<FaceChanger>();
     }
 
     public void Follow(Transform tofollow, Vector3 offset, float stoppingDistance) {
