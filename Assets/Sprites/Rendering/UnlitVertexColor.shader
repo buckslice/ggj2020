@@ -1,4 +1,4 @@
-﻿Shader "Custom/VertexColored" {
+﻿Shader "Custom/VertexColoredUnlit" {
     Properties {
         _MainTex ("Base (RGB)", 2D) = "white" {}
         _Cutoff("Alpha cutoff", Range(0,1)) = 0.5
@@ -9,7 +9,7 @@
         LOD 200
        
         CGPROGRAM
-        #pragma surface surf Lambert alpha alphatest:_Cutoff //fullforwardshadows addshadow 
+        #pragma surface surf NoLighting alpha alphatest:_Cutoff noforwardadd//fullforwardshadows addshadow 
        
         sampler2D _MainTex;
  
@@ -22,6 +22,14 @@
             half4 c = tex2D (_MainTex, IN.uv_MainTex);
             o.Albedo = c.rgb * IN.color.rgb; // vertex RGB
             o.Alpha = c.a * IN.color.a; // vertex Alpha
+        }
+
+        fixed4 LightingNoLighting(SurfaceOutput s, fixed3 lightDir, fixed atten)
+        {
+            fixed4 c;
+            c.rgb = s.Albedo; 
+            c.a =  0;
+            return c;
         }
         ENDCG
     }
