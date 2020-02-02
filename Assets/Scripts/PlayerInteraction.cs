@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour {
 
-    TownPerson active_follower = null;
-    List<TownPerson> happyPeople = new List<TownPerson>();
+    TownPerson onDeckPerson = null;
+    public static List<TownPerson> happyPeople = new List<TownPerson>(); // list of all the matched friends!
+
     // Start is called before the first frame update
     void Start() {
-
+        
     }
 
     // Update is called once per frame
@@ -16,12 +17,42 @@ public class PlayerInteraction : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.E)) {
             Collider[] nearby = Physics.OverlapSphere(transform.position, 2, 1 << 8);
             //Debug.Log(nearby.Length);
+
             foreach (var near in nearby) {
                 var person = near.GetComponent<TownPerson>();
-                if (!person.isfollowing) {
-                    person.Follow(transform, new Vector3(2,0,0), 0);
+                if (person.following) {
+                    continue;
                 }
+
+                if (onDeckPerson) {
+                    // check for match with nearby guy
+                    if (onDeckPerson.IsMyMatch(person)) {
+                        TownPerson front = null;
+                        if (happyPeople.Count > 0) {
+                            front = happyPeople[happyPeople.Count - 1];
+                        }
+
+                        happyPeople.Add(person);
+                        happyPeople.Add(onDeckPerson);
+                        onDeckPerson.FollowBehind(transform);
+                        person.FollowBehind(onDeckPerson.transform);
+                        if (front) {
+                            front.FollowBehind(person.transform);
+                        }
+
+
+                    } else {
+                        onDeckPerson.UnFollow();
+                    }
+                    onDeckPerson = null;
+
+                } else {
+                    person.FollowAtSide(transform);
+                    onDeckPerson = person;
+                }
+                break;
             }
         }
     }
+
 }

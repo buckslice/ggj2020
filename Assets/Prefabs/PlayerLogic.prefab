@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookSensitivity: 2
-  moveSpeed: 5
+  moveSpeed: 7
   jumpSpeed: 5
   clipWhileFlying: 0
   groundedTime: 0
