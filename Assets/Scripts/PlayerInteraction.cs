@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour {
 
     TownPerson active_follower = null;
+    List<TownPerson> happyPeople = new List<TownPerson>();
     // Start is called before the first frame update
     void Start() {
 
