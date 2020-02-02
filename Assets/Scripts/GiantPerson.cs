@@ -21,11 +21,11 @@ public class GiantPerson : MonoBehaviour {
             return;
 
         anim.SetBool("idle", giantState == GiantState.IDLE);
-        anim.SetBool("alert", giantState == GiantState.ALERT);
-        anim.SetBool("chasing", giantState == GiantState.CHASING);
-        anim.SetBool("patrolling", giantState == GiantState.PATROLLING);
-        anim.SetBool("win_state", giantState == GiantState.WIN_STATE);
-        anim.SetBool("hug", giantState == GiantState.HUG);
+        //anim.SetBool("alert", giantState == GiantState.ALERT);
+        anim.SetBool("chasing", giantState == GiantState.CHASING || giantState == GiantState.PATROLLING);
+        //anim.SetBool("patrolling", giantState == GiantState.PATROLLING);
+        anim.SetBool("win", giantState == GiantState.WIN_STATE);
+        //anim.SetBool("hug", giantState == GiantState.HUG);
     }
 
     public GiantState giantState;
@@ -75,23 +75,59 @@ public class GiantPerson : MonoBehaviour {
     Transform currentPatrolPoint;
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
-        if (Vector3.Distance(this.transform.position, player.position) < max_awareness && (giantState == GiantState.IDLE || giantState == GiantState.PATROLLING)) {
-            giantState = GiantState.CHASING;
-            FollowAtSide(player);
-        } else if (Vector3.Distance(this.transform.position, player.position) > max_chase_range && giantState == GiantState.CHASING) {
-            giantState = GiantState.PATROLLING;
-            UnFollow();
-        } else if (giantState == GiantState.PATROLLING) {
-            //go through a list of points on the island
-            currentPatrolPoint = patrolPoints[Random.Range(0,patrolPoints.Length)];
-            //if (currentPatrolPoint.position) {
-                //TODO: If the distance of the giant is 
-            //}
+        //If Giants come together, activate the win state and cancel everything. Time for hugs yo.
+        Collider[] nearby = Physics.OverlapSphere(transform.position, 10f, LayerMask.GetMask("Giant"));
+        //Debug.Log(nearby.Length);
+
+        if (giantState != GiantState.WIN_STATE) {
+            foreach (var near in nearby)
+            {
+                var giant = near.GetComponent<GiantPerson>();
+                if (giant != this)
+                    Debug.Log(giant);
+
+                if (giant != this && giant != null)
+                {
+                    giantState = GiantState.WIN_STATE;
+                    giant.giantState = GiantState.WIN_STATE;
+                }
+
+            }
+
         }
 
-        if (following) {
+        if (Vector3.Distance(this.transform.position, player.position) < max_awareness && (giantState == GiantState.IDLE || giantState == GiantState.PATROLLING))
+        {
+            giantState = GiantState.CHASING;
+            FollowAtSide(player);
+        }
+        else if (Vector3.Distance(this.transform.position, player.position) > max_chase_range && giantState == GiantState.CHASING)
+        {
+            giantState = GiantState.PATROLLING;
+            UnFollow();
+        }
+        else if (giantState == GiantState.PATROLLING)
+        {
+            //go through a list of points on the island
+            if (currentPatrolPoint != null)
+                FollowAtSide(currentPatrolPoint);
+
+            if (currentPatrolPoint == null || Vector3.Distance(currentPatrolPoint.transform.position, this.transform.position) < 9)
+            {
+                currentPatrolPoint = patrolPoints[Random.Range(0, patrolPoints.Length)];
+            }
+
+
+        }
+        else if (giantState == GiantState.WIN_STATE) {
+            UnFollow();
+            return;
+        }
+        if (following)
+        {
             Vector3 off = following.TransformDirection(offset);
             agent.SetDestination(following.position + off);
 
@@ -103,5 +139,7 @@ public class GiantPerson : MonoBehaviour {
 
             transform.LookAt(transform.position + dir);
         }
+
     }
+
 }
